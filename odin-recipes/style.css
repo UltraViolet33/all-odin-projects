@@ -1,0 +1,21 @@
+* {
+  border: 1px solid red;
+}
+
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+h3 {
+  text-align: left;
+}
+
+img {
+  width: 300px;
+  height: auto;
+}
+
+p {
+  font-size: large;
+}

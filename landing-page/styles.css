@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header,
+.presentation,
+.footer {
+  background-color: #1f2937;
+  color: #f9faf8;
+}
+
+.header-text {
+  font-size: 24px;
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  gap: 12px;
+}
+
+.nav-list,
+.text-presentation {
+  font-size: 18px;
+}
+
+.presentation {
+  display: flex;
+  padding: 50px;
+}
+
+.container-presentation {
+  display: flex;
+}
+
+.container-text-presentation {
+  flex: 1;
+}
+
+.header-title {
+  font-size: 48px;
+}
+
+.container-image-code {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+}
+
+.sign-up-btn {
+  background-color: #3882f6;
+  color: white;
+  height: 35px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+}
+
+/********************************* information section ***************************/
+
+.informations {
+  margin-bottom: 30px;
+}
+
+.informations-title {
+  text-align: center;
+}
+
+.items-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  border: 1px solid blue;
+  border-radius: 10px;
+}
+
+/********************************* testimonial section ***************************/
+
+.testimonial {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/********************************* action section ***************************/
+
+.container-action {
+  margin: 50px;
+}
+
+.action-items {
+  background-color: #3882f6;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  border-radius: 5px;
+}
+
+.action-btn {
+  border: 1px solid white;
+}
+
+/********************************* footer section ***************************/
+
+
+.footer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
