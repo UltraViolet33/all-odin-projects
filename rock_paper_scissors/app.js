@@ -62,13 +62,11 @@ function game() {
 
   btn_user_choice.forEach(btn => {
     btn.addEventListener("click", function (e) {
-      console.log(e.target.id);
+      winner_element.textContent = "";
       let playerSelection = e.target.id;
 
       player_choice_div.textContent = `Player chose ${playerSelection}`;
-
       const computerSelection = getComputerChoice();
-
       computer_choice_div.textContent = `Computer chose ${computerSelection}`;
 
       let winner = playRound(playerSelection, computerSelection);
@@ -86,10 +84,23 @@ function game() {
 
       if (scorePlayer === 5 || scoreComputer === 5) {
         winner = scoreComputer > scorePlayer ? "computer" : "player";
-        console.log(`The winner is ${winner}`);
+        if (scoreComputer > scorePlayer) {
+          winner = "Computer";
+          winner_element.style.color = "red";
+          winner_element.textContent = `You lose !`;
+        } else if (scoreComputer < scorePlayer) {
+          winner = "Player";
+          winner_element.style.color = "green";
+          winner_element.textContent = `You are the winner !`;
+        } else {
+          winner = "No winner";
+          winner_element.textContent = `There is no winner !`;
+        }
+
         score_player_element.textContent = "";
         score_computer_element.textContent = "";
-        winner_element.textContent = `Winner is ${winner} !`;
+        scoreComputer = 0;
+        scorePlayer = 0;
       }
     });
   });
