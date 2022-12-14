@@ -1,0 +1,53 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.title {
+  text-align: center;
+}
+
+img {
+  width: 350px;
+  height: 350px;
+  box-shadow: 0 0 10px rgb(101, 131, 192);
+  display: block;
+  margin: auto;
+}
+
+.super-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 21px;
+}
+
+.red-border {
+  box-shadow: 0 0 10px rgb(177, 57, 36);
+  border-radius: 10px;
+}
+
+.right-container {
+  padding: 10px;
+  width: 700px;
+}
+
+.container-top {
+  height: 350px;
+}
+
+.container-ingredients {
+  padding: 10px;
+  flex: 1;
+}
