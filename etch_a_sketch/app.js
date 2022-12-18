@@ -1,6 +1,27 @@
 "use strict";
 let container = document.querySelector("#container");
+
+let setSquares_btn = document.querySelector("#set_squares_btn");
+
+setSquares_btn.addEventListener("click", function () {
+  setSquares();
+});
+
 initGrid();
+
+function setSquares() {
+  console.log("ok");
+  let newNumberSquares = parseInt(prompt("How many squares do you want ?"));
+  if (newNumberSquares > 100) {
+    newNumberSquares = 100;
+  } else if (newNumberSquares <= 0) {
+    newNumberSquares = 1;
+  } else if (isNaN(newNumberSquares)) {
+    newNumberSquares = 16;
+  }
+  console.log(newNumberSquares);
+}
+
 function initGrid() {
   let grid_container = document.createElement("div");
   grid_container.classList.add("grid");
