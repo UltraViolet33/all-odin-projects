@@ -1,20 +1,28 @@
+:root {
+  --bg-color-square: rgb(255, 255, 255);
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  box-sizing: border-box;
 }
 
 #container {
   background-color: black;
   display: inline-block;
+  width: 500px;
+  height: 500px;
+  box-sizing: content-box;
   border: 5px solid black;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(16, 30px);
-  grid-template-rows: repeat(16, 30px);
+  grid-template-columns: repeat(16, 26.6px);
+  grid-template-rows: repeat(16, 26.6px);
   grid-gap: 5px;
 }
 
@@ -25,5 +33,7 @@ body {
   font-family: Arial;
   font-size: 3rem;
   font-weight: bold;
-  background: white;
+  background: var(--bg-color-square);
 }
+
+
