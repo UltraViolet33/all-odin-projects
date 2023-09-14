@@ -18,8 +18,11 @@
 
 .sidebar {
     grid-row-start: 1;
+    grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 1;
+    display: grid;
+    gap: 30px;
 }
 
 
@@ -31,4 +34,19 @@
 .content {
     grid-column-start: 2;
     grid-column-end: 4;
+}
+
+
+
+
+/*--------------------------------------SIDEBAR*/
+
+
+.nav-1>ul,
+.nav-2>ul {
+    list-style-type: none;
+}
+
+li>a {
+    text-decoration: none;
 }
