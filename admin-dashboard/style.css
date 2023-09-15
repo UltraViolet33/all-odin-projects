@@ -25,17 +25,24 @@
     gap: 30px;
 }
 
-
-.header {
-    grid-column-start: 2;
-    grid-column-end: 4;
-}
-
 .content {
     grid-column-start: 2;
     grid-column-end: 4;
 }
 
+
+/* -------------------------------------- HEADER -------------------------------------- */
+
+.header {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    display: grid;
+}
+
+.top-header, .bottom-header{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
 
 
 
