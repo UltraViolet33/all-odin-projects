@@ -1,13 +1,9 @@
 const btn_user_choice = document.querySelectorAll("button");
-
 const player_choice_div = document.querySelector("#player-choice");
 const computer_choice_div = document.querySelector("#computer-choice");
-
 const result_div = document.querySelector("#result");
-
 const score_player_element = document.querySelector("#score-player");
 const score_computer_element = document.querySelector("#score-computer");
-
 const winner_element = document.querySelector("#winner");
 
 function getComputerChoice() {
@@ -60,7 +56,7 @@ function game() {
   let scoreComputer = 0;
   let scorePlayer = 0;
 
-  btn_user_choice.forEach(btn => {
+  btn_user_choice.forEach((btn) => {
     btn.addEventListener("click", function (e) {
       winner_element.textContent = "";
       let playerSelection = e.target.id;

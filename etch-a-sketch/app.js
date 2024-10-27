@@ -1,7 +1,6 @@
 "use strict";
 
 let container = document.querySelector("#container");
-
 let setSquares_btn = document.querySelector("#set_squares_btn");
 
 setSquares_btn.addEventListener("click", function () {

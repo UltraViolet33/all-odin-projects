@@ -2,10 +2,10 @@ body {
   background: #3b4664;
 }
 
-h1{
+h1 {
   text-align: center;
-  font-size:40px;
-  color:white;
+  font-size: 40px;
+  color: white;
 }
 
 #keyboard {
@@ -19,14 +19,14 @@ h1{
   width: 300px;
   background: #252d44;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px ;
+  box-shadow: 5px 5px 5px;
 }
 
 #calculator {
   width: 300px;
-  margin:auto;
+  margin: auto;
   margin-top: 100px;
-  margin-top:40px;
+  margin-top: 40px;
 }
 
 #screen {
@@ -140,20 +140,19 @@ button {
   color: white;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
-@media screen and (max-width:300px){
-
+@media screen and (max-width: 300px) {
   #calculator {
     width: 250px;
-    margin:auto;
+    margin: auto;
     margin-top: 100px;
-    margin-top:40px;
+    margin-top: 40px;
   }
 
-  #keyboard{
-    width:250px;
+  #keyboard {
+    width: 250px;
   }
 }
