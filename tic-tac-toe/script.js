@@ -1,11 +1,8 @@
 const Cell = (value) => {
   const getValue = () => value;
 
-  //   const isAvailable = () => value === 0;
-
   return {
     getValue,
-    // isAvailable,
   };
 };
 
@@ -69,21 +66,84 @@ const Player = (name, token) => {
 const gameController = (() => {
   const player1 = Player("bob", gameBoard.getBoardValues("X"));
   const player2 = Player("roger", gameBoard.getBoardValues("O"));
-
   const board = gameBoard.getBoard();
 
   let activePLayer = player1;
-
+  const getActivePlayer = () => activePLayer;
   const switchPLayerTurn = () => {
     activePLayer = activePLayer === player1 ? player2 : player1;
   };
 
-  const getActivePlayer = () => activePLayer;
+  let gameResult;
+  const setGameResult = (result) => {
+    gameResult = result;
+  };
+  const getGameResult = () => {
+    return gameResult;
+  };
+
+  let gameOver = false;
+  const isGameOver = () => gameOver;
+  const setGameOver = () => {
+    gameOver = !gameOver;
+  };
+
+  const checkIfPlayerWon = (player) => {
+    for (let i = 0; i < 3; i++) {
+      if (
+        board[i][0].getValue() === player.getToken() &&
+        board[i][1].getValue() === player.getToken() &&
+        board[i][2].getValue() === player.getToken()
+      ) {
+        return true;
+      }
+    }
+
+    for (let i = 0; i < 3; i++) {
+      if (
+        board[0][i].getValue() === player.getToken() &&
+        board[1][i].getValue() === player.getToken() &&
+        board[2][i].getValue() === player.getToken()
+      ) {
+        return true;
+      }
+    }
+
+    if (
+      board[0][0].getValue() === player.getToken() &&
+      board[1][1].getValue() === player.getToken() &&
+      board[2][2].getValue() === player.getToken()
+    ) {
+      return true;
+    }
+
+    if (
+      board[0][2].getValue() === player.getToken() &&
+      board[1][1].getValue() === player.getToken() &&
+      board[2][0].getValue() === player.getToken()
+    ) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const stopGame = (winner) => {
+    const result = `Player ${winner.getName()} won !!`;
+
+    setGameResult(result);
+    setGameOver();
+  };
 
   const playerMoves = (x, y) => {
     if (gameBoard.isCellAvailable(x, y)) {
       gameBoard.updateCellValue(activePLayer, x, y);
-      switchPLayerTurn();
+      if (checkIfPlayerWon(activePLayer)) {
+        stopGame(activePLayer);
+      } else {
+        switchPLayerTurn();
+      }
+      return;
     }
 
     return "cell is not available";
@@ -95,6 +155,9 @@ const gameController = (() => {
     getBoard,
     playerMoves,
     getActivePlayer,
+    checkIfPlayerWon,
+    isGameOver,
+    getGameResult,
   };
 })();
 
@@ -105,17 +168,19 @@ const screenController = (() => {
   const updateScreen = () => {
     board_div.textContent = "";
     const board = gameBoard.getBoard();
-
-    const activePLayer = gameController.getActivePlayer();
-
-    playerTurn_div.textContent = `Player turn :  ${activePLayer.getName()} - ${activePLayer.getToken()}`;
+    if (gameController.isGameOver()) {
+      playerTurn_div.textContent = gameController.getGameResult();
+      board_div.removeEventListener("click", handleClick);
+    } else {
+      const activePLayer = gameController.getActivePlayer();
+      playerTurn_div.textContent = `Player turn :  ${activePLayer.getName()} - ${activePLayer.getToken()}`;
+    }
 
     board.forEach((row, indexRow) => {
       row.forEach((cell, indexCol) => {
         const cell_button = document.createElement("button");
         cell_button.dataset.column = indexCol;
         cell_button.dataset.row = indexRow;
-
         cell_button.classList.add("cell");
         cell_button.textContent = cell.getValue();
         board_div.appendChild(cell_button);
@@ -125,16 +190,9 @@ const screenController = (() => {
 
   const handleClick = (e) => {
     const column = e.target.dataset.column;
-    const row = e.target.dataset.row; 
-
-    try {
-        gameController.playerMoves(row, column);
-    } catch (error) {
-        // console.log("error");
-    }
-    
+    const row = e.target.dataset.row;
+    gameController.playerMoves(row, column);
     updateScreen();
-    
   };
 
   board_div.addEventListener("click", handleClick);
@@ -145,23 +203,3 @@ const screenController = (() => {
 })();
 
 screenController.updateScreen();
-
-// console.log(gameBoard.printBoard());
-
-// // console.log(gameController.getPlayerTurn());
-
-// gameController.playerMoves(0, 0);
-
-// console.log(gameBoard.printBoard());
-
-// gameController.playerMoves(1, 0);
-
-// console.log(gameBoard.printBoard());
-
-// gameController.playerMoves(1, 1);
-
-// console.log(gameBoard.printBoard());
-
-// console.log(gameController.playerMoves(1, 2));
-
-// console.log(gameBoard.printBoard());
